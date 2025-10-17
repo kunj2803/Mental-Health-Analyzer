@@ -17,7 +17,6 @@ from utils import load_model, label_map, label_colors, DEVICE
 
 with st.spinner("Loading the Mental Health model... Please wait..."):
     tokenizer, model = load_model()
-st.write("Model loaded ✅")
 
 # ------------------------------
 # Page layout & Dark Theme
