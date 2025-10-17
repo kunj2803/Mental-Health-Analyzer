@@ -1,7 +1,7 @@
 # 🧠 Mental-Health-Analyzer
 
 **Description:**  
-Classifies mental health status from text (sentence) using a BERT-based NLP model. Supports both single text input and batch CSV predictions with probability visualization. The model is trained on mental health-related text datasets and predicts categories like Anxiety, Depression, Stress, etc.
+Classifies mental health status from text (sentence) using a BERT-based NLP model. Supports both single text input and batch CSV predictions with probability visualization. The model is trained on mental health-related text datasets and predicts categories like Anxiety, Depression, Stress, etc Achieving 90% accuracy.
 
 **Dataset Details:**  
 - **Source:** Public mental health datasets from social media posts, forums, or research datasets.  
