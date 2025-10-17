@@ -14,11 +14,27 @@ Classifies mental health status from text (sentence) using a BERT-based NLP mode
    - Stress
    - Bi-Polar
    - Personality Disorder
+   - <img width="786" height="490" alt="image" src="https://github.com/user-attachments/assets/e790aceb-f2fa-47fd-8d51-9dd34c0274e7" />
+
 - **Download dataset:** [[Link to dataset]](https://www.kaggle.com/datasets/suchintikasarkar/sentiment-analysis-for-mental-health)  
 
-**Features:**  
-1. **Single text input** – Enter a sentence and get the predicted mental health status with probabilities.  
-2. **Batch CSV predictions** – Upload a CSV file with multiple sentences to get predictions for each row, including probability visualization.  
+
+## 🧹 Preprocessing Steps
+Before training, the text data was cleaned and prepared to ensure high-quality inputs for the BERT model:
+
+1. **Lowercasing** – All text converted to lowercase for uniformity.
+2. **URL & Mention Removal** – Removed links, mentions (`@user`), and hashtags.
+3. **Special Characters & Extra Spaces** – Cleaned unnecessary symbols, emojis, and redundant whitespace.
+4. **Stopword Handling** – Removed common stopwords while retaining meaning-relevant words.
+5. **Lemmatization** – Reduced words to their base or dictionary form to improve generalization.
+6. **Class Balancing** – Applied oversampling and text augmentation to handle minority mental health classes.
+7. **Train-Validation-Test Split** – Dataset divided into **70% training**, **15% validation**, and **15% testing** for robust model evaluation.
+
+
+**Key Features:**  
+- Achieves ~90% accuracy on mental health-related text.
+- can Detect sarcasm at some extent.
+- Visualize prediction probabilities for better insights(Depression and Suicidal are close meaning).
 
 ## Demo:  Deploy link : [[link]](https://mental-health-analyzer.streamlit.app/)
 ## Screenshots
