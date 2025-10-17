@@ -8,7 +8,7 @@ from io import BytesIO
 # Download model weights first
 # ------------------------------
 st.write("Checking/downloading model weights... ⏳")
-import download_model  # this will execute download_model.py
+import Download_model  # this will execute download_model.py
 st.write("Model weights ready ✅")
 
 # ------------------------------
