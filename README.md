@@ -20,7 +20,8 @@ Classifies mental health status from text (sentence) using a BERT-based NLP mode
 1. **Single text input** – Enter a sentence and get the predicted mental health status with probabilities.  
 2. **Batch CSV predictions** – Upload a CSV file with multiple sentences to get predictions for each row, including probability visualization.  
 
-**Demo:**  
+## Demo:  Deploy link : [[link]](https://mental-health-analyzer.streamlit.app/)
+## Screenshots
 <img width="1892" height="845" alt="image" src="https://github.com/user-attachments/assets/001c1c2e-ff60-43ff-b2db-1a10634f1c42" />
 
 <img width="1896" height="850" alt="image" src="https://github.com/user-attachments/assets/97366cd8-2b84-4d00-8745-2f62ed924a2e" />
@@ -33,17 +34,12 @@ Classifies mental health status from text (sentence) using a BERT-based NLP mode
 
 
 **Usage:**  
-1. **Download the model Weights(417 mb) from my drive:**
-```bash
-python download_model.py
-```
-
-2. **Install required packages:**
+1. **Install required packages:**
 ```bash
 pip install -r requirements.txt
 ```
 
-3. **Run the Streamlit app:**
+2. **Run the Streamlit app:**
 ```
 streamlit run app.py
 ```
