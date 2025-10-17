@@ -3,64 +3,40 @@ import torch
 import torch.nn.functional as F
 import pandas as pd
 from io import BytesIO
-from utils import load_model, label_map, label_colors, DEVICE
+
+# ------------------------------
+# Download model weights first
+# ------------------------------
+st.write("Checking/downloading model weights... ⏳")
+import download_model  # this will execute download_model.py
+st.write("Model weights ready ✅")
 
 # ------------------------------
 # Load model
 # ------------------------------
+from utils import load_model, label_map, label_colors, DEVICE
 
 with st.spinner("Loading the Mental Health model... Please wait..."):
     tokenizer, model = load_model()
-
+st.write("Model loaded ✅")
 
 # ------------------------------
 # Page layout & Dark Theme
 # ------------------------------
 st.set_page_config(page_title="Mental Health Analyzer", page_icon="🧠", layout="wide")
 
-st.markdown("""
-<style>
+st.markdown("""<style>
 #MainMenu, footer, header {visibility: hidden;}
 body, .stApp { background-color: #0E1117; color: #FAFAFA; font-size:18px; }
-
-.stTextArea textarea { 
-    background-color: #1C1F26 !important; 
-    color: #FAFAFA !important; 
-    font-size:28px;          
-    line-height:1.8;         
-    padding:20px;             
-    border-radius:10px;
-}
-textarea::placeholder { 
-    color: #AAAAAA !important; 
-    font-size:28px; 
-    font-style:italic; 
-}
-.stButton button, .stDownloadButton button { 
-    background-color: #2C2F38; 
-    color: #FAFAFA; 
-    border-radius: 8px; 
-    padding: 0.6em 1.2em; 
-    font-size:18px; 
-}
-.stButton button:hover, .stDownloadButton button:hover { 
-    background-color: #444752; 
-}
-.stDataFrame { 
-    background-color: #1C1F26 !important; 
-    color: #FAFAFA !important; 
-    font-size:22px;             
-}
-.stDataFrame th, .stDataFrame td { 
-    color: #FAFAFA !important; 
-    font-size:22px; 
-    padding:12px 10px;          
-    min-width:200px;             
-}
+.stTextArea textarea { background-color: #1C1F26 !important; color: #FAFAFA !important; font-size:28px; line-height:1.8; padding:20px; border-radius:10px; }
+textarea::placeholder { color: #AAAAAA !important; font-size:28px; font-style:italic; }
+.stButton button, .stDownloadButton button { background-color: #2C2F38; color: #FAFAFA; border-radius: 8px; padding: 0.6em 1.2em; font-size:18px; }
+.stButton button:hover, .stDownloadButton button:hover { background-color: #444752; }
+.stDataFrame { background-color: #1C1F26 !important; color: #FAFAFA !important; font-size:22px; }
+.stDataFrame th, .stDataFrame td { color: #FAFAFA !important; font-size:22px; padding:12px 10px; min-width:200px; }
 .prob-label { font-weight:bold; font-size:22px; width:auto; min-width:180px; }
 .prob-percent { margin-left:10px; font-size:20px; }
-</style>
-""", unsafe_allow_html=True)
+</style>""", unsafe_allow_html=True)
 
 st.title("🧠 Mental Health Analyzer")
 
@@ -93,12 +69,7 @@ if st.button("Predict Single"):
 
         color = label_colors.get(pred_label, "#FAFAFA")
         st.markdown(f"""
-            <div style="
-                font-size:36px;           
-                font-weight:bold;
-                margin-top:15px;
-                line-height:1.5;
-            ">
+            <div style="font-size:36px; font-weight:bold; margin-top:15px; line-height:1.5;">
                 Predicted Status&nbsp;:&nbsp;
                 <span style='color:{color};'>{pred_label}</span>
                 &nbsp;&nbsp;({confidence:.2f}%)
@@ -114,11 +85,11 @@ if st.button("Predict Single"):
             </div>
             """, unsafe_allow_html=True)
 
-st.markdown("""<hr style='border:1px solid #444752; margin:30px 0;'>""", unsafe_allow_html=True)
-
 # ------------------------------
 # Batch Prediction from CSV 
 # ------------------------------
+st.markdown("""<hr style='border:1px solid #444752; margin:30px 0;'>""", unsafe_allow_html=True)
+
 st.subheader("Batch Prediction from CSV")
 uploaded_file = st.file_uploader("Upload CSV with a column 'text'", type=["csv"], key="batch")
 
