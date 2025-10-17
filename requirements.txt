@@ -1,20 +1,8 @@
-# Downloading from Google Drive
-gdown==4.8.1
-
-# PyTorch and utilities
-torch>=2.0.0
-torchvision>=0.18.0
-numpy>=1.25.0
-pandas>=2.1.0
-
-# Hugging Face Transformers (if using BERT or similar)
-transformers>=4.40.0
-
-# For building a web app / frontend
-streamlit>=1.30.0
-
-# Optional for preprocessing / text cleaning
-regex>=2025.10.17
-
-numpy>=1.25.0
-pandas>=2.1.0
+gdown
+torch
+torchvision
+numpy
+pandas
+transformers
+streamlit
+regex
