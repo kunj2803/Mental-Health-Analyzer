@@ -15,3 +15,6 @@ streamlit>=1.30.0
 
 # Optional for preprocessing / text cleaning
 regex>=2025.10.17
+
+numpy>=1.25.0
+pandas>=2.1.0
