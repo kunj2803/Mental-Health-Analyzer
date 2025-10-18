@@ -7,6 +7,7 @@ from nltk.stem import WordNetLemmatizer
 from nltk import pos_tag, word_tokenize
 from nltk.corpus import wordnet
 import nltk
+import os
 
 project_dir = os.path.dirname(__file__)
 nltk_data_path = os.path.join(project_dir, "nltk_data")
