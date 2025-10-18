@@ -2,14 +2,33 @@ import torch
 from transformers import BertTokenizer, BertForSequenceClassification
 import html
 import re
+import pandas as pd
+from nltk.stem import WordNetLemmatizer
+from nltk import pos_tag, word_tokenize
+from nltk.corpus import wordnet
+import nltk
 
-# ------------------------------
-# Config
-# ------------------------------
-# MODEL_PATH = r"D:\kunj\VS Code\Mental_Health\Final\model"
-MODEL_PATH = r"model"
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+# Download required NLTK data
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('wordnet')
+nltk.download('omw-1.4')
 
+# Initialize lemmatizer
+lemmatizer = WordNetLemmatizer()
+
+# POS mapper for lemmatizer
+def get_wordnet_pos(treebank_tag):
+    if treebank_tag.startswith('J'):
+        return wordnet.ADJ
+    elif treebank_tag.startswith('V'):
+        return wordnet.VERB
+    elif treebank_tag.startswith('N'):
+        return wordnet.NOUN
+    elif treebank_tag.startswith('R'):
+        return wordnet.ADV
+    else:
+        return wordnet.NOUN
 
 def clean_and_lemmatize_text(text):
     if not isinstance(text, str) or text.strip() == "":
@@ -49,7 +68,11 @@ def clean_and_lemmatize_text(text):
     lemmatized_tokens = [lemmatizer.lemmatize(token, get_wordnet_pos(pos)) for token, pos in pos_tags]
 
     return " ".join(lemmatized_tokens)
-    
+
+# MODEL_PATH = r"D:\kunj\VS Code\Mental_Health\Final\model"
+MODEL_PATH = r"model"
+DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+
 # ------------------------------
 # Load model and tokenizer
 # ------------------------------
