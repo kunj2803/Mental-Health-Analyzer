@@ -8,12 +8,15 @@ from nltk import pos_tag, word_tokenize
 from nltk.corpus import wordnet
 import nltk
 
-# Download required NLTK data
-nltk.download('punkt')
-nltk.download('punkt_tab')
-nltk.download('averaged_perceptron_tagger')
-nltk.download('wordnet')
-nltk.download('omw-1.4')
+import nltk
+nltk.data.path.append(r'nltk_data')
+
+# # Download required NLTK data
+# nltk.download('punkt')
+# nltk.download('punkt_tab')
+# nltk.download('averaged_perceptron_tagger')
+# nltk.download('wordnet')
+# nltk.download('omw-1.4')
 
 # Initialize lemmatizer
 lemmatizer = WordNetLemmatizer()
