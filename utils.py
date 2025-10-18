@@ -1,6 +1,7 @@
 import torch
 from transformers import BertTokenizer, BertForSequenceClassification
 import html
+import re
 
 # ------------------------------
 # Config
