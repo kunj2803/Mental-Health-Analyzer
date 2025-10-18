@@ -15,11 +15,11 @@ nltk_data_path = os.path.join(project_dir, "nltk_data")
 # Add this path so NLTK can find your data
 nltk.data.path.append(nltk_data_path)
 
-# Download required NLTK data
-nltk.download('punkt')
-nltk.download('averaged_perceptron_tagger')
-nltk.download('wordnet')
-nltk.download('omw-1.4')
+# # Download required NLTK data
+# nltk.download('punkt')
+# nltk.download('averaged_perceptron_tagger')
+# nltk.download('wordnet')
+# nltk.download('omw-1.4')
 
 # Initialize lemmatizer
 lemmatizer = WordNetLemmatizer()
