@@ -13,7 +13,7 @@ import Download_model  # this will execute download_model.py
 # ------------------------------
 # Load model
 # ------------------------------
-from utils import load_model, label_map, label_colors, DEVICE
+from utils import load_model, label_map, label_colors, DEVICE,clean_and_lemmatize_text
 
 with st.spinner("Loading the Mental Health model... Please wait..."):
     tokenizer, model = load_model()
@@ -54,7 +54,8 @@ if st.button("Predict Single"):
     if user_input.strip() == "":
         st.warning("Please enter some text!")
     else:
-        inputs = tokenizer(user_input, padding="max_length", truncation=True, max_length=128, return_tensors="pt")
+        cleaned_text = clean_and_lemmatize_text(user_input)
+        inputs = tokenizer(cleaned_text, padding="max_length", truncation=True, max_length=128, return_tensors="pt")
         inputs = {k: v.to(DEVICE) for k, v in inputs.items()}
 
         with torch.no_grad():
