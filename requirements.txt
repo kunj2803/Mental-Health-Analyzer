@@ -6,3 +6,4 @@ pandas
 transformers
 streamlit
 regex
+nltk
