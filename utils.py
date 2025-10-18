@@ -8,8 +8,11 @@ from nltk import pos_tag, word_tokenize
 from nltk.corpus import wordnet
 import nltk
 
-import nltk
-nltk.data.path.append(r'nltk_data')
+project_dir = os.path.dirname(__file__)
+nltk_data_path = os.path.join(project_dir, "nltk_data")
+
+# Add this path so NLTK can find your data
+nltk.data.path.append(nltk_data_path)
 
 # Download required NLTK data
 nltk.download('punkt')
